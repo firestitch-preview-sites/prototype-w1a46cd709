@@ -5,7 +5,7 @@
   "cli": {
     "analytics": false,
     "cache": {
-      "enabled": true,
+      "enabled": false,
       "path": ".angular/cache" 
     }
   },
