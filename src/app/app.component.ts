@@ -1,52 +1,50 @@
 import { Component } from '@angular/core';
 import { RouterOutlet, RouterLink, RouterLinkActive } from '@angular/router';
-import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, RouterLink, RouterLinkActive, CommonModule],
+  imports: [RouterOutlet, RouterLink, RouterLinkActive],
   template: `
-    <nav class="top-nav">
-      <div class="nav-container">
+    <div class="app-container">
+      <nav class="navbar">
         <div class="nav-brand">
           <h2>MyApp</h2>
         </div>
         <div class="nav-links">
-          <a routerLink="/home" routerLinkActive="active" class="nav-link">Home</a>
-          <a routerLink="/account" routerLinkActive="active" class="nav-link">Account</a>
-          <a routerLink="/admin" routerLinkActive="active" class="nav-link">Admin</a>
+          <a routerLink="/home" routerLinkActive="active">Home</a>
+          <a routerLink="/account" routerLinkActive="active">Account</a>
+          <a routerLink="/admin" routerLinkActive="active">Admin</a>
+          <a routerLink="/my-profile" routerLinkActive="active">My Profile</a>
         </div>
-      </div>
-    </nav>
-    
-    <main class="main-content">
-      <router-outlet></router-outlet>
-    </main>
+      </nav>
+      
+      <main class="main-content">
+        <router-outlet></router-outlet>
+      </main>
+    </div>
   `,
   styles: [`
-    .top-nav {
-      background: #2c3e50;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-      position: sticky;
-      top: 0;
-      z-index: 100;
+    .app-container {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
     }
 
-    .nav-container {
-      max-width: 1200px;
-      margin: 0 auto;
+    .navbar {
+      background: linear-gradient(135deg, #2c3e50, #3498db);
+      color: white;
+      padding: 0 20px;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 0 20px;
       height: 60px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     }
 
     .nav-brand h2 {
-      color: #ecf0f1;
       margin: 0;
-      font-weight: 600;
+      font-weight: 300;
       font-size: 1.5rem;
     }
 
@@ -55,49 +53,47 @@ import { CommonModule } from '@angular/common';
       gap: 30px;
     }
 
-    .nav-link {
-      color: #bdc3c7;
+    .nav-links a {
+      color: white;
       text-decoration: none;
-      font-weight: 500;
       padding: 8px 16px;
-      border-radius: 6px;
+      border-radius: 4px;
       transition: all 0.3s ease;
+      font-weight: 500;
     }
 
-    .nav-link:hover {
-      color: #ecf0f1;
-      background: rgba(255,255,255,0.1);
+    .nav-links a:hover {
+      background-color: rgba(255,255,255,0.1);
+      transform: translateY(-1px);
     }
 
-    .nav-link.active {
-      color: #3498db;
-      background: rgba(52,152,219,0.2);
+    .nav-links a.active {
+      background-color: rgba(255,255,255,0.2);
+      font-weight: 600;
     }
 
     .main-content {
-      min-height: calc(100vh - 60px);
-      background: #f8f9fa;
-      padding: 20px 0;
+      flex: 1;
     }
 
     @media (max-width: 768px) {
-      .nav-container {
+      .navbar {
         flex-direction: column;
         height: auto;
         padding: 15px 20px;
       }
       
       .nav-links {
-        margin-top: 15px;
         gap: 20px;
+        margin-top: 10px;
       }
       
-      .main-content {
-        padding: 15px 0;
+      .nav-links a {
+        font-size: 0.9rem;
       }
     }
   `]
 })
 export class AppComponent {
-  title = 'prototype-app';
+  title = 'prototype';
 }
