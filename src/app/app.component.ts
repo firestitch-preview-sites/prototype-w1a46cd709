@@ -5,89 +5,99 @@ import { CommonModule } from '@angular/common';
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [CommonModule, RouterOutlet, RouterLink, RouterLinkActive],
+  imports: [RouterOutlet, RouterLink, RouterLinkActive, CommonModule],
   template: `
-    <div class="app-container">
-      <nav class="navbar">
+    <nav class="top-nav">
+      <div class="nav-container">
         <div class="nav-brand">
-          <h1>Preview Site</h1>
+          <h2>MyApp</h2>
         </div>
-        <ul class="nav-links">
-          <li>
-            <a routerLink="/home" 
-               routerLinkActive="active" 
-               [routerLinkActiveOptions]="{exact: true}">
-              Home
-            </a>
-          </li>
-          <li>
-            <a routerLink="/account" 
-               routerLinkActive="active">
-              Account
-            </a>
-          </li>
-        </ul>
-      </nav>
-      
-      <main class="main-content">
-        <router-outlet></router-outlet>
-      </main>
-    </div>
+        <div class="nav-links">
+          <a routerLink="/home" routerLinkActive="active" class="nav-link">Home</a>
+          <a routerLink="/account" routerLinkActive="active" class="nav-link">Account</a>
+          <a routerLink="/admin" routerLinkActive="active" class="nav-link">Admin</a>
+        </div>
+      </div>
+    </nav>
+    
+    <main class="main-content">
+      <router-outlet></router-outlet>
+    </main>
   `,
   styles: [`
-    .app-container {
-      min-height: 100vh;
-      background: #f5f5f5;
+    .top-nav {
+      background: #2c3e50;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      position: sticky;
+      top: 0;
+      z-index: 100;
     }
 
-    .navbar {
-      background: #fff;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-      padding: 0 20px;
+    .nav-container {
+      max-width: 1200px;
+      margin: 0 auto;
       display: flex;
       justify-content: space-between;
       align-items: center;
+      padding: 0 20px;
       height: 60px;
     }
 
-    .nav-brand h1 {
+    .nav-brand h2 {
+      color: #ecf0f1;
       margin: 0;
-      color: #333;
+      font-weight: 600;
       font-size: 1.5rem;
     }
 
     .nav-links {
-      list-style: none;
       display: flex;
-      gap: 20px;
-      margin: 0;
-      padding: 0;
+      gap: 30px;
     }
 
-    .nav-links a {
+    .nav-link {
+      color: #bdc3c7;
       text-decoration: none;
-      color: #666;
       font-weight: 500;
       padding: 8px 16px;
-      border-radius: 4px;
-      transition: all 0.2s ease;
+      border-radius: 6px;
+      transition: all 0.3s ease;
     }
 
-    .nav-links a:hover {
-      color: #007bff;
-      background-color: #f8f9fa;
+    .nav-link:hover {
+      color: #ecf0f1;
+      background: rgba(255,255,255,0.1);
     }
 
-    .nav-links a.active {
-      color: #007bff;
-      background-color: #e3f2fd;
+    .nav-link.active {
+      color: #3498db;
+      background: rgba(52,152,219,0.2);
     }
 
     .main-content {
       min-height: calc(100vh - 60px);
+      background: #f8f9fa;
       padding: 20px 0;
+    }
+
+    @media (max-width: 768px) {
+      .nav-container {
+        flex-direction: column;
+        height: auto;
+        padding: 15px 20px;
+      }
+      
+      .nav-links {
+        margin-top: 15px;
+        gap: 20px;
+      }
+      
+      .main-content {
+        padding: 15px 0;
+      }
     }
   `]
 })
 export class AppComponent {
+  title = 'prototype-app';
 }
