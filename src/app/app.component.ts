@@ -16,6 +16,7 @@ import { RouterOutlet, RouterLink, RouterLinkActive } from '@angular/router';
           <a routerLink="/account" routerLinkActive="active">Account</a>
           <a routerLink="/admin" routerLinkActive="active">Admin</a>
           <a routerLink="/my-profile" routerLinkActive="active">My Profile</a>
+          <a routerLink="/settings" routerLinkActive="active">Settings</a>
         </div>
       </nav>
       
@@ -86,6 +87,8 @@ import { RouterOutlet, RouterLink, RouterLinkActive } from '@angular/router';
       .nav-links {
         gap: 20px;
         margin-top: 10px;
+        flex-wrap: wrap;
+        justify-content: center;
       }
       
       .nav-links a {
